@@ -1,14 +1,18 @@
-using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using WebdriverLevel2.Pages;
-using WebDriverManager;
-using WebDriverManager.DriverConfigs.Impl;
-using WebDriverManager.Helpers;
+// <copyright file="ShoppingCartTests.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace WebdriverLevel2
 {
-    public class Tests
+    using NUnit.Framework;
+    using OpenQA.Selenium;
+    using OpenQA.Selenium.Chrome;
+    using WebdriverLevel2.Pages;
+    using WebDriverManager;
+    using WebDriverManager.DriverConfigs.Impl;
+    using WebDriverManager.Helpers;
+
+    public class ShoppingCartTests
     {
         private static IWebDriver driver;
         private static MainPage mainPage;
@@ -31,16 +35,13 @@ namespace WebdriverLevel2
         {
             mainPage.AddRocketToShoppingCart();
             cartPage.ClickProceedToCheckout();
-            checkoutPage.PlaceOrder("Ivan", "Petrov", "ul.Lisica", "Sofia", "1000", "ivan.petrov@abv.bg");
+            checkoutPage.PlaceOrder("Ivan", "Petrov", "ul.Lisica", "Sofia", "1000", "0892521365", "ivan.petrov@abv.bg");
         }
-
 
         [Test]
         public void SecondTest()
         {
-
         }
-
 
         [Test]
         public void ThirdTest()
