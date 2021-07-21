@@ -1,21 +1,17 @@
 ﻿// <copyright file="MainPage.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
-
 namespace WebdriverLevel2.Pages
 {
     using OpenQA.Selenium;
     using OpenQA.Selenium.Support.UI;
     using SeleniumExtras.WaitHelpers;
-    using System;
     using System.Threading;
 
     public class MainPage : BaseEshopPage
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MainPage"/> class.
-        /// </summary>
-        /// <param name="driver"></param>
+        private readonly IWait<IWebDriver> wait;
+
         public MainPage(IWebDriver driver)
             : base(driver)
         {
@@ -25,18 +21,13 @@ namespace WebdriverLevel2.Pages
 
         private IWebElement ViewCartButton => this.Driver.FindElement(By.XPath("//a[@class='added_to_cart wc-forward']"));
 
-        public void WaitUntilVisibilityOfElement(IWebElement element)
-        {
-            var wait = new WebDriverWait(this.Driver, TimeSpan.FromMinutes(1));
-            wait.Until(ExpectedConditions.ElementToBeClickable(element));
-        }
 
         public void AddRocketToShoppingCart()
         {
             this.Driver.Navigate().GoToUrl(this.GetUrl());
             this.AddFalcon9.Click();
-            Thread.Sleep(1000);
-            this.WaitUntilVisibilityOfElement(this.ViewCartButton);
+            Thread.Sleep(700);
+            //this.wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy((By)this.ViewCartButton));
             this.ViewCartButton.Click();
         }
 
