@@ -2,20 +2,16 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
-using System;
-using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;
-using SeleniumExtras.WaitHelpers;
-using WebdriverLevel2.Pages;
-using WebdriverLevel2.Waits;
-using WebDriverManager;
-using WebDriverManager.DriverConfigs.Impl;
-using WebDriverManager.Helpers;
-
 namespace WebdriverLevel2
 {
+    using NUnit.Framework;
+    using OpenQA.Selenium;
+    using OpenQA.Selenium.Chrome;
+    using WebdriverLevel2.Pages;
+    using WebDriverManager;
+    using WebDriverManager.DriverConfigs.Impl;
+    using WebDriverManager.Helpers;
+
     public class ShoppingCartTests
     {
         private static IWebDriver driver;
@@ -53,15 +49,12 @@ namespace WebdriverLevel2
             mainPage.AddRocketToShoppingCart();
             cartPage.InputCouponCode("happybirthday");
             cartPage.ClickApplyCoupon();
-            IWait<IWebDriver> wait = new WebDriverWait(driver, TimeSpan.FromSeconds(300));
-
-            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//th[contains(text(), 'Coupon: happybirthday')]")));
 
             Assert.IsNotNull(driver.FindElement(By.XPath("//th[contains(text(), 'Coupon: happybirthday')]")));
 
             cartPage.ChangeQuantity("3");
 
-            wait.Until(condtion => cartPage.GetAmount().Equals("150.00€"));
+            Assert.AreEqual("150.00€", cartPage.GetAmount());
         }
 
         [TearDown]

@@ -21,7 +21,7 @@ namespace WebdriverLevel2.Pages
         {
             this.Driver.Navigate().GoToUrl(this.GetUrl());
             this.AddFalcon9.Click();
-            this.wait.WaitForElementToExists((By)this.AddFalcon9);
+            this.wait.WaitForElementToExists(By.XPath("//a[@class='added_to_cart wc-forward']"));
 
             this.ViewCartButton.Click();
         }

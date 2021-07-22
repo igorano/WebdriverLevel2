@@ -43,7 +43,7 @@ namespace WebdriverLevel2.Pages
             this.PostCode.SendKeys(postCode);
             this.PhoneNumber.SendKeys(phoneNumber);
             this.Email.SendKeys(email);
-            this.wait.WaitForDocumentReady();
+            this.wait.WaitForAjax();
             this.PlaceOrderElement.Click();
         }
     }

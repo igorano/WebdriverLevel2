@@ -5,7 +5,6 @@
 namespace WebdriverLevel2.Pages
 {
     using OpenQA.Selenium;
-    using WebdriverLevel2.Waits;
 
     public class CartPage : BaseEshopPage
     {
@@ -39,6 +38,7 @@ namespace WebdriverLevel2.Pages
         public void ClickApplyCoupon()
         {
             this.ApplyCoupon.Click();
+            wait.WaitForElementToExists(By.XPath("//th[contains(text(), 'Coupon: happybirthday')]"));
         }
 
         public void InputCouponCode(string code)
@@ -51,7 +51,7 @@ namespace WebdriverLevel2.Pages
             this.InputFieldQuantity.Clear();
             this.InputFieldQuantity.SendKeys(quantityNumber);
             this.UpdateCartButton.Click();
-            this.wait.WaitForDocumentReady();
+            this.wait.WaitForAjax();
         }
 
         public string GetAmount()

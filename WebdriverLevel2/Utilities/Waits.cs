@@ -42,5 +42,10 @@ namespace WebdriverLevel2.Waits
         {
             wait.Until(drv => ((IJavaScriptExecutor)this.driver).ExecuteScript("return document.readyState").Equals("complete"));
         }
+
+        public void WaitForAjax()
+        {
+            wait.Until(d => (bool)(d as IJavaScriptExecutor).ExecuteScript("return jQuery.active == 0"));
+        }
     }
 }
