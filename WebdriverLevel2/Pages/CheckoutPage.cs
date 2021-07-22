@@ -5,12 +5,9 @@
 namespace WebdriverLevel2.Pages
 {
     using OpenQA.Selenium;
-    using WebdriverLevel2.Waits;
 
     public class CheckoutPage : BaseEshopPage
     {
-        private readonly Waits wait;
-
         public CheckoutPage(IWebDriver driver)
             : base(driver)
         {

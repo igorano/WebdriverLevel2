@@ -9,8 +9,6 @@ namespace WebdriverLevel2.Pages
 
     public class CartPage : BaseEshopPage
     {
-        private readonly Waits wait;
-
         public CartPage(IWebDriver driver)
             : base(driver)
         {

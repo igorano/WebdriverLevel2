@@ -1,4 +1,8 @@
-﻿namespace WebdriverLevel2.Waits
+﻿// <copyright file="Waits.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace WebdriverLevel2.Waits
 {
     using System;
     using OpenQA.Selenium;
@@ -8,12 +12,15 @@
     public class Waits
     {
         public readonly IWebDriver driver;
-        public readonly IWait<IWebDriver> wait;
+        public readonly WebDriverWait wait;
 
         public Waits(IWebDriver webDriver)
         {
-            driver = webDriver;
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            this.driver = webDriver;
+            this.wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10))
+            {
+                PollingInterval = TimeSpan.FromMilliseconds(100)
+            };
         }
 
         public IWebElement WaitForElementToBeClickable(By locator)

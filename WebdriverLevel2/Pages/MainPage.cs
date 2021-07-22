@@ -4,16 +4,12 @@
 namespace WebdriverLevel2.Pages
 {
     using OpenQA.Selenium;
-    using WebdriverLevel2.Waits;
 
     public class MainPage : BaseEshopPage
     {
-        private readonly Waits wait;
-
         public MainPage(IWebDriver driver)
             : base(driver)
         {
-            this.wait = new Waits(driver);
         }
 
         private IWebElement AddFalcon9 => this.Driver.FindElement(By.XPath("//a[@data-product_id='28' and contains(text(),'Add to cart')]"));
