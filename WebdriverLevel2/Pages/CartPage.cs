@@ -5,12 +5,12 @@
 namespace WebdriverLevel2.Pages
 {
     using OpenQA.Selenium;
-    using System;
-    using System.Threading;
-    using OpenQA.Selenium.Support.UI;
+    using WebdriverLevel2.Waits;
 
     public class CartPage : BaseEshopPage
     {
+        private readonly Waits wait;
+
         public CartPage(IWebDriver driver)
             : base(driver)
         {
@@ -53,8 +53,7 @@ namespace WebdriverLevel2.Pages
             this.InputFieldQuantity.Clear();
             this.InputFieldQuantity.SendKeys(quantityNumber);
             this.UpdateCartButton.Click();
-            IWait<IWebDriver> wait = new WebDriverWait(this.Driver, TimeSpan.FromSeconds(10));
-            wait.Until(driver1 => ((IJavaScriptExecutor)this.Driver).ExecuteScript("return document.readyState").Equals("complete"));
+            this.wait.WaitForDocumentReady();
         }
 
         public string GetAmount()

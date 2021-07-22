@@ -5,7 +5,6 @@
 namespace WebdriverLevel2.Pages
 {
     using OpenQA.Selenium;
-    using System.Threading;
     using WebdriverLevel2.Waits;
 
     public class CheckoutPage : BaseEshopPage
@@ -15,7 +14,6 @@ namespace WebdriverLevel2.Pages
         public CheckoutPage(IWebDriver driver)
             : base(driver)
         {
-            this.wait = new Waits(driver);
         }
 
         protected override string GetUrl()
@@ -48,7 +46,7 @@ namespace WebdriverLevel2.Pages
             this.PostCode.SendKeys(postCode);
             this.PhoneNumber.SendKeys(phoneNumber);
             this.Email.SendKeys(email);
-            Thread.Sleep(700);
+            this.wait.WaitForDocumentReady();
             this.PlaceOrderElement.Click();
         }
     }

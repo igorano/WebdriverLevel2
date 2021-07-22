@@ -4,17 +4,16 @@
 namespace WebdriverLevel2.Pages
 {
     using OpenQA.Selenium;
-    using OpenQA.Selenium.Support.UI;
-    using SeleniumExtras.WaitHelpers;
-    using System.Threading;
+    using WebdriverLevel2.Waits;
 
     public class MainPage : BaseEshopPage
     {
-        private readonly IWait<IWebDriver> wait;
+        private readonly Waits wait;
 
         public MainPage(IWebDriver driver)
             : base(driver)
         {
+            this.wait = new Waits(driver);
         }
 
         private IWebElement AddFalcon9 => this.Driver.FindElement(By.XPath("//a[@data-product_id='28' and contains(text(),'Add to cart')]"));
@@ -26,8 +25,8 @@ namespace WebdriverLevel2.Pages
         {
             this.Driver.Navigate().GoToUrl(this.GetUrl());
             this.AddFalcon9.Click();
-            Thread.Sleep(700);
-            //this.wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy((By)this.ViewCartButton));
+            this.wait.WaitForElementToExists((By)this.AddFalcon9);
+
             this.ViewCartButton.Click();
         }
 

@@ -7,8 +7,8 @@
 
     public class Waits
     {
-        private readonly IWebDriver driver;
-        private readonly IWait<IWebDriver> wait;
+        public readonly IWebDriver driver;
+        public readonly IWait<IWebDriver> wait;
 
         public Waits(IWebDriver webDriver)
         {
@@ -21,10 +21,19 @@
             return wait.Until(ExpectedConditions.ElementToBeClickable(locator));
         }
 
-
         public IWebElement WaitForElementToBeVisible(By locator)
         {
             return wait.Until(ExpectedConditions.ElementIsVisible(locator));
+        }
+
+        public IWebElement WaitForElementToExists(By locator)
+        {
+            return wait.Until(ExpectedConditions.ElementExists(locator));
+        }
+
+        public void WaitForDocumentReady()
+        {
+            wait.Until(drv => ((IJavaScriptExecutor)this.driver).ExecuteScript("return document.readyState").Equals("complete"));
         }
     }
 }

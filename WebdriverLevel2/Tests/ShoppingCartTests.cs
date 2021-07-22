@@ -2,19 +2,20 @@
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
+using System;
+using NUnit.Framework;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
+using WebdriverLevel2.Pages;
+using WebdriverLevel2.Waits;
+using WebDriverManager;
+using WebDriverManager.DriverConfigs.Impl;
+using WebDriverManager.Helpers;
+
 namespace WebdriverLevel2
 {
-    using System;
-    using NUnit.Framework;
-    using OpenQA.Selenium;
-    using OpenQA.Selenium.Chrome;
-    using OpenQA.Selenium.Support.UI;
-    using SeleniumExtras.WaitHelpers;
-    using WebdriverLevel2.Pages;
-    using WebDriverManager;
-    using WebDriverManager.DriverConfigs.Impl;
-    using WebDriverManager.Helpers;
-
     public class ShoppingCartTests
     {
         private static IWebDriver driver;
